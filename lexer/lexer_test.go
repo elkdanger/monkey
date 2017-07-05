@@ -23,7 +23,7 @@ func TestNextToken(t *testing.T) {
 		{token.SEMICOLON, ";"},
 	}
 
-	l := New(input)
+	l := CreateLexer(input)
 
 	for i, tt := range tests {
 		tok := l.NextToken()
