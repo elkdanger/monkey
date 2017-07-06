@@ -16,6 +16,8 @@ const (
 	// Operators
 	ASSIGN = "="
 	PLUS   = "+"
+	EQ     = "=="
+	NEQ    = "!="
 
 	// Delimiters
 	COMMA       = ","
