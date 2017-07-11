@@ -9,6 +9,7 @@ type Lexer struct {
 	ch           byte
 }
 
+// CreateLexer creates a new lexer instance given some input
 func CreateLexer(input string) *Lexer {
 	l := &Lexer{input: input}
 	l.readChar()
@@ -70,7 +71,13 @@ func (l *Lexer) NextToken() token.Token {
 		tok = newToken(token.ASTERISK, l.ch)
 		break
 	case '/':
+		if l.peekChar() == '/' {
+			l.eatRestOfLine()
+			return l.NextToken()
+		}
+
 		tok = newToken(token.SLASH, l.ch)
+
 		break
 	case '<':
 		tok = newToken(token.LESSTHAN, l.ch)
@@ -146,6 +153,12 @@ func isDigit(ch byte) bool {
 
 func (l *Lexer) skipWhitespace() {
 	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
+		l.readChar()
+	}
+}
+
+func (l *Lexer) eatRestOfLine() {
+	for l.ch != '\n' {
 		l.readChar()
 	}
 }

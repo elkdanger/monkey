@@ -13,10 +13,13 @@ func TestNextToken(t *testing.T) {
 	let add = fn(x, y) {
 		x + y;
 	};
+
+	// This is a comment
+	// Another comment on another line
 	
 	let result = add(five, ten);
 	!-/*5;
-	5 < 10 > 5;
+	5 < 10 > 5;		// This is a comment after a statement
 
 	if (5 < 10) {
 		return true;
