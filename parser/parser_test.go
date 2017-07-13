@@ -255,6 +255,10 @@ func TestOperatorPrecedenceParsing(t *testing.T) {
 			"10 + 12 * 15 < 3 + 5",
 			"((10 + (12 * 15)) < (3 + 5))",
 		},
+		{
+			"3 + 4; -5 * 5",
+			"(3 + 4)((-5) * 5)",
+		},
 	}
 
 	for _, tt := range tests {
